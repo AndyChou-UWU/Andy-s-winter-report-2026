@@ -7,6 +7,7 @@
     <style>
         :root {
             --neon-green: #00ffcc;
+            --neon-purple: #bf00ff;
             --warm-orange: #ff9933;
             --danger-red: #ff4444;
             --bg-dark: #050505;
@@ -30,7 +31,7 @@
             z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
-        nav { display: flex; justify-content: center; gap: 25px; }
+        nav { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
         nav a { color: #888; text-decoration: none; font-weight: bold; font-size: 0.9rem; transition: 0.4s; cursor: pointer; }
         nav a:hover, nav a.active { color: var(--accent); text-shadow: 0 0 10px var(--accent); }
 
@@ -44,21 +45,23 @@
         .visual-box img, .visual-box video { width: 100%; display: block; cursor: zoom-in; }
         .visual-box:hover { transform: translateY(-8px); border-color: #fff; }
 
-        .photo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .photo-grid .visual-box img { height: 250px; object-fit: cover; }
+        .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); padding: 40px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.1); transition: border-color 0.4s; }
+        h2 { font-size: 2.8rem; margin-bottom: 20px; color: var(--accent); transition: color 0.4s; }
+        p { font-size: 1.1rem; color: #ccc; line-height: 1.8; margin-bottom: 15px; font-weight: bold; }
+        
+        .badge { display: inline-block; background: var(--accent); color: #000; padding: 4px 12px; border-radius: 5px; font-weight: 900; font-size: 0.8rem; margin-bottom: 10px; transition: background 0.4s; }
 
-        .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); padding: 40px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.1); }
-        h2 { font-size: 2.8rem; margin-bottom: 20px; color: var(--accent); }
-        p { font-size: 1.1rem; color: #ccc; line-height: 1.8; margin-bottom: 15px; }
-        .badge { display: inline-block; background: var(--accent); color: #000; padding: 4px 12px; border-radius: 5px; font-weight: 900; font-size: 0.8rem; margin-bottom: 10px; }
-
-        .thanks-container { display: flex; align-items: center; justify-content: center; gap: 20px; }
-        .waving-hand { font-size: 4rem; animation: wave 2s infinite ease-in-out; transform-origin: 70% 70%; }
-        @keyframes wave {
-            0%, 100% { transform: rotate(0deg); }
-            25% { transform: rotate(-20deg); }
-            75% { transform: rotate(20deg); }
+        .btn-github {
+            display: inline-block; padding: 12px 25px; background: var(--accent); color: #000; 
+            text-decoration: none; border-radius: 50px; font-weight: bold; margin-top: 15px;
+            box-shadow: 0 0 15px var(--accent); transition: 0.3s;
         }
+        .btn-github:hover { transform: scale(1.05); filter: brightness(1.2); }
+
+        /* 揮手動畫 */
+        .thanks-container { display: flex; align-items: center; justify-content: center; gap: 20px; }
+        .waving-hand { font-size: 4rem; animation: wave 2s infinite ease-in-out; transform-origin: 70% 70%; display: inline-block; }
+        @keyframes wave { 0%, 100% { transform: rotate(0deg); } 25% { transform: rotate(-20deg); } 75% { transform: rotate(20deg); } }
 
         #lightbox, #video-lightbox { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.95); display: none; justify-content: center; align-items: center; z-index: 2000; cursor: zoom-out; }
         #lightbox img, #video-lightbox video { max-width: 90%; max-height: 85%; border: 3px solid var(--accent); border-radius: 15px; animation: zoomIn 0.3s ease-out; }
@@ -78,6 +81,7 @@
         <nav id="main-nav">
             <a href="#home">首頁</a>
             <a href="#cyber">資安實戰</a>
+            <a href="#game-x">Game-X</a>
             <a href="#ursina">3D 開發</a>
             <a href="#houlong">後龍老家</a>
             <a href="#farm">生活紀錄</a>
@@ -101,21 +105,36 @@
             <div class="glass-card" style="border-color: var(--danger-red);">
                 <div class="badge" style="background: var(--danger-red); color: #fff;">SECURITY</div>
                 <h2 style="color: var(--danger-red);">資安課程實錄</h2>
-                <p style="font-weight: bold; font-size: 20px;">在這次的資安研習中，我深入探討了網路防禦機制與駭客攻擊辨識。透過理論與模擬操作，我不僅掌握了基礎防護技巧，更建立了完整的個人資安意識，體會到在數位時代維護資訊安全的重要責任感。</p>
+                <p>在資安研習中，我深入探討了網路防禦機制與駭客攻擊辨識。透過模擬操作掌握基礎防護技巧，建立了完整的數位時代安全意識。</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="game-x">
+        <div class="container">
+            <div class="glass-card" style="border-color: var(--neon-purple);">
+                <div class="badge" style="background: var(--neon-purple); color: #fff;">ENGINE DEV</div>
+                <h2 style="color: var(--neon-purple);">Game-X 遊戲引擎</h2>
+                <p>自主開發的 Game-X 專案，專注於探索遊戲底層邏輯與資源管理。這是我在軟體架構設計上的重要實踐，透過實作理解引擎運作的核心原理。</p>
+                <a href="https://github.com/andychou978/Game-X" target="_blank" class="btn-github" style="background: var(--neon-purple); box-shadow: 0 0 15px var(--neon-purple);">瀏覽 GitHub 專案庫</a>
+            </div>
+            <div class="visual-box" style="border-color: var(--neon-purple); padding: 40px; text-align: center; background: radial-gradient(circle, #220033 0%, #050505 100%);">
+                <div style="font-size: 8rem; filter: drop-shadow(0 0 20px var(--neon-purple));">🎮</div>
+                <h3 style="margin-top: 20px; color: var(--neon-purple); letter-spacing: 5px;">SYSTEM CORE</h3>
             </div>
         </div>
     </section>
 
     <section id="ursina">
         <div class="container">
-            <div class="photo-grid">
-                <div class="visual-box"><img src="ursina_1.png" onclick="openLightbox(this.src)"></div>
-                <div class="visual-box"><img src="ursina_2.png" onclick="openLightbox(this.src)"></div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <div class="visual-box"><img src="ursina_1.png" style="height: 250px; object-fit: cover;" onclick="openLightbox(this.src)"></div>
+                <div class="visual-box"><img src="ursina_2.png" style="height: 250px; object-fit: cover;" onclick="openLightbox(this.src)"></div>
             </div>
             <div class="glass-card">
                 <div class="badge" style="background: #00bbff; color: #000;">CODING</div>
                 <h2 style="color: #00bbff;">Ursina 3D 建模</h2>
-                <p style="font-weight: bold; font-size: 20px;">運用 Python 結合 Ursina 引擎進行 3D 場景開發，是我寒假最具挑戰性的專案。在過程中，我成功掌握了物件渲染、動態邏輯與場景架構，這段經歷極大地提升了我的程式邏輯能力與 3D 空間建構的技術基礎。</p>
+                <p>運用 Python 結合 Ursina 引擎進行開發。成功掌握物件渲染、動態邏輯與場景架構，極大地提升了程式邏輯與空間技術基礎。</p>
             </div>
         </div>
     </section>
@@ -124,12 +143,12 @@
         <div class="container" style="display: block;">
             <div class="glass-card" style="margin-bottom: 40px; border-color: var(--warm-orange); text-align: center;">
                 <div class="badge" style="background: var(--warm-orange); color: #000;">HOME TOWN</div>
-                <h2 style="color: var(--warm-orange);">後龍老家：烤肉與放炮</h2>
-                <p style="font-weight: bold; font-size: 20px;">寒假回到後龍老家過年，跟家人一起開心地烤肉、放鞭炮，在熱鬧的鞭炮聲與美食中，深刻感受家鄉最真實的節慶氛圍，這是我在這個寒假中最放鬆且溫暖的一段時光。</p>
+                <h2 style="color: var(--warm-orange);">後龍老家：過年紀錄</h2>
+                <p>回到老家與家人共慶佳節。在鞭炮聲與聚餐中，感受最真實的節慶氛圍與家鄉情懷，是寒假中最溫馨的放鬆時光。</p>
             </div>
             <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 20px;">
                 <div class="visual-box" style="border-color: var(--warm-orange);">
-                    <video muted loop playsinline src="後龍3.mp4" style="height: 400px; width: 100%; object-fit: cover; cursor: pointer;" onclick="openVideoLightbox(this.src)"></video>
+                    <video muted loop playsinline src="後龍3.mp4" style="height: 400px; width: 100%; object-fit: cover;" onclick="openVideoLightbox(this.src)"></video>
                 </div>
                 <div style="display: grid; gap: 20px;">
                     <div class="visual-box" style="border-color: var(--warm-orange);"><img src="後龍1.jpg" style="height: 190px; width: 100%; object-fit: cover;" onclick="openLightbox(this.src)"></div>
@@ -141,14 +160,14 @@
 
     <section id="farm">
         <div class="container">
-            <div class="photo-grid">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
                 <div class="visual-box" style="border-color: var(--warm-orange);"><img src="農場.jpg" style="height: 300px; width: 100%; object-fit: cover;" onclick="openLightbox(this.src)"></div>
                 <div class="visual-box" style="border-color: var(--warm-orange);"><img src="雞蛋.jpg" style="height: 300px; width: 100%; object-fit: cover;" onclick="openLightbox(this.src)"></div>
             </div>
             <div class="glass-card" style="border-color: var(--warm-orange);">
                 <div class="badge" style="background: var(--warm-orange); color: #000;">LIFE EXPERIENCE</div>
                 <h2 style="color: var(--warm-orange);">農場生活紀錄</h2>
-                <p style="font-weight: bold; font-size: 20px;">親身參與農業實踐，從土地勞作、環境維護到餐食籌備，體驗了完整的農村生活鏈。在與自然的接觸中，我學習到資源循環的重要性，也透過雙手勞作體會到最踏實的生活價值與成就感。</p>
+                <p>參與農業實踐與勞作。透過與自然的互動學習資源循環，在平實的生活細節中體會勞動的價值與成就感。</p>
             </div>
         </div>
     </section>
@@ -157,41 +176,22 @@
         <div style="text-align: center;">
             <div class="thanks-container">
                 <span class="waving-hand">👋</span>
-                <h2 style="font-size: 4rem;">謝謝大家</h2>
+                <h2 style="font-size: 4rem; color: var(--accent); display: inline-block; margin: 0 20px;">謝謝大家</h2>
                 <span class="waving-hand">👋</span>
             </div>
-            <div style="margin-top: 100px;">
-                <img src="卡波.png" style="max-width: 3000px; border-radius: 20px; box-shadow: 0 0 20px var(--accent);">
+            <div style="margin-top: 50px;">
+                <img src="卡波.png" style="max-width: 400px; border-radius: 20px; box-shadow: 0 0 30px var(--accent); border: 2px solid var(--accent); cursor: zoom-in;" onclick="openLightbox(this.src)">
             </div>
         </div>
     </section>
 
-    <footer>
-        <p>周楷恩 2026 | 2026 WINTER REPORT</p>
-    </footer>
+    <footer><p>周楷恩 2026 | 2026 WINTER REPORT</p></footer>
 
     <script>
-        function openLightbox(src) {
-            document.getElementById('lightbox-img').src = src;
-            document.getElementById('lightbox').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-        function closeLightbox() {
-            document.getElementById('lightbox').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-        function openVideoLightbox(src) {
-            const lb = document.getElementById('video-lightbox');
-            const v = document.getElementById('lightbox-video');
-            v.src = src; lb.style.display = 'flex';
-            document.body.style.overflow = 'hidden'; v.play();
-        }
-        function closeVideoLightbox(e) {
-            if (e.target.id === 'video-lightbox') {
-                document.getElementById('video-lightbox').style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        }
+        function openLightbox(src) { document.getElementById('lightbox-img').src = src; document.getElementById('lightbox').style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+        function closeLightbox() { document.getElementById('lightbox').style.display = 'none'; document.body.style.overflow = 'auto'; }
+        function openVideoLightbox(src) { const lb = document.getElementById('video-lightbox'); const v = document.getElementById('lightbox-video'); v.src = src; lb.style.display = 'flex'; document.body.style.overflow = 'hidden'; v.play(); }
+        function closeVideoLightbox(e) { if (e.target.id === 'video-lightbox') { document.getElementById('video-lightbox').style.display = 'none'; document.body.style.overflow = 'auto'; } }
 
         document.querySelectorAll('nav a').forEach(link => {
             link.addEventListener('click', function(e) {
@@ -201,15 +201,12 @@
             });
         });
 
-        // --- 背景繪製邏輯 ---
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
         let w, h, mode = "tech";
         const fontSize = 18;
         let columns, drops;
-
-        // 橘點數量設定：在這裡改數量（例如改為 300 會變超多）
-        const orangeDotCount = 1000; 
+        const orangeDotCount = 400; 
 
         function init() {
             w = canvas.width = window.innerWidth;
@@ -222,18 +219,10 @@
 
         class Particle {
             constructor() { this.reset(); }
-            reset() {
-                this.x = Math.random() * w; this.y = Math.random() * -h;
-                this.vy = Math.random() * 1.5 + 0.5; this.size = Math.random() * 2 + 1;
-                this.opacity = Math.random() * 0.5 + 0.1;
-            }
+            reset() { this.x = Math.random() * w; this.y = Math.random() * -h; this.vy = Math.random() * 1.5 + 0.5; this.size = Math.random() * 2 + 1; this.opacity = Math.random() * 0.5 + 0.1; }
             update() { this.y += this.vy; if (this.y > h) this.reset(); }
-            draw() {
-                ctx.fillStyle = `rgba(255, 153, 51, ${this.opacity})`;
-                ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill();
-            }
+            draw() { ctx.fillStyle = `rgba(255, 153, 51, ${this.opacity})`; ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill(); }
         }
-        // 根據 orangeDotCount 建立粒子陣列
         const particles = Array.from({length: orangeDotCount}, () => new Particle());
 
         function draw() {
@@ -248,6 +237,16 @@
                     if (drops[i] * fontSize > h && Math.random() > 0.975) drops[i] = 0;
                     drops[i]++;
                 }
+            } else if (mode === "game") {
+                ctx.font = fontSize + "px monospace";
+                for (let i = 0; i < drops.length; i++) {
+                    const chars = "GAMEX01xy+-*/{}<>"; 
+                    const text = chars.charAt(Math.floor(Math.random() * chars.length));
+                    ctx.fillStyle = Math.random() > 0.95 ? "#fff" : "#bf00ff";
+                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                    if (drops[i] * fontSize > h && Math.random() > 0.975) drops[i] = 0;
+                    drops[i]++;
+                }
             } else {
                 particles.forEach(p => { p.update(); p.draw(); });
             }
@@ -258,15 +257,22 @@
         window.onscroll = () => {
             let current = "";
             const sections = document.querySelectorAll('section');
-            sections.forEach(sec => {
-                if (window.pageYOffset >= sec.offsetTop - 300) current = sec.getAttribute('id');
-            });
+            sections.forEach(sec => { if (window.pageYOffset >= sec.offsetTop - 350) current = sec.getAttribute('id'); });
             document.querySelectorAll('nav a').forEach(a => {
                 a.classList.remove('active');
                 if (a.getAttribute('href') === `#${current}`) a.classList.add('active');
             });
-            mode = (["houlong", "farm", "thanks"].includes(current)) ? "life" : "tech";
-            document.documentElement.style.setProperty('--accent', mode === "life" ? '#ff9933' : '#00ffcc');
+
+            if (["houlong", "farm", "thanks"].includes(current)) {
+                mode = "life";
+                document.documentElement.style.setProperty('--accent', '#ff9933');
+            } else if (current === "game-x") {
+                mode = "game";
+                document.documentElement.style.setProperty('--accent', '#bf00ff');
+            } else {
+                mode = "tech";
+                document.documentElement.style.setProperty('--accent', '#00ffcc');
+            }
         };
     </script>
 </body>
