@@ -10,6 +10,8 @@
             --neon-purple: #bf00ff;
             --warm-orange: #ff9933;
             --danger-red: #ff4444;
+            --sky-blue: #00d2ff;
+            --forest-green: #33ff33;
             --bg-dark: #050505;
             --accent: var(--neon-green);
         }
@@ -42,7 +44,7 @@
             border-radius: 20px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.6); 
             border: 2px solid var(--accent); background: #111; transition: transform 0.4s, border-color 0.4s;
         }
-        .visual-box img, .visual-box video { width: 100%; display: block; cursor: zoom-in; }
+        .visual-box img, .visual-box video { width: 100%; display: block; cursor: zoom-in; object-fit: cover; }
         .visual-box:hover { transform: translateY(-8px); border-color: #fff; }
 
         .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); padding: 40px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.1); transition: border-color 0.4s; }
@@ -58,6 +60,11 @@
         }
         .btn-github:hover { transform: scale(1.05); filter: brightness(1.2); }
 
+        /* --- 100px 矮版佈局 --- */
+        .houlong-layout { display: grid; grid-template-columns: 1.5fr 1fr; gap: 20px; height: 500px !important; }
+        .houlong-side { display: grid; grid-template-rows: 1fr 1fr; gap: 20px; height: 500px; }
+        .houlong-layout .visual-box { height: 100%; }
+
         /* 揮手動畫 */
         .thanks-container { display: flex; align-items: center; justify-content: center; gap: 20px; }
         .waving-hand { font-size: 4rem; animation: wave 2s infinite ease-in-out; transform-origin: 70% 70%; display: inline-block; }
@@ -65,7 +72,6 @@
 
         #lightbox, #video-lightbox { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.95); display: none; justify-content: center; align-items: center; z-index: 2000; cursor: zoom-out; }
         #lightbox img, #video-lightbox video { max-width: 90%; max-height: 85%; border: 3px solid var(--accent); border-radius: 15px; animation: zoomIn 0.3s ease-out; }
-        @keyframes zoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
         footer { text-align: center; padding: 60px 40px; color: #666; font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,0.05); }
     </style>
@@ -82,7 +88,7 @@
             <a href="#home">首頁</a>
             <a href="#cyber">資安實戰</a>
             <a href="#game-x">Game-X</a>
-            <a href="#ursina">3D 開發</a>
+            <a href="#adventure">旅遊紀錄</a>
             <a href="#houlong">後龍老家</a>
             <a href="#farm">生活紀錄</a>
             <a href="#thanks">謝謝大家</a>
@@ -115,26 +121,35 @@
             <div class="glass-card" style="border-color: var(--neon-purple);">
                 <div class="badge" style="background: var(--neon-purple); color: #fff;">ENGINE DEV</div>
                 <h2 style="color: var(--neon-purple);">Game-X 遊戲引擎</h2>
-                <p>自主開發的 Game-X 專案，專注於探索遊戲底層邏輯與資源管理。這是我在軟體架構設計上的重要實踐，透過實作理解引擎運作的核心原理。</p>
+                <p>自主開發的 Game-X 專案，專注於探索遊戲底層邏輯與資源管理。這是我在軟體架構設計上的重要實踐。</p>
                 <a href="https://github.com/andychou978/Game-X" target="_blank" class="btn-github" style="background: var(--neon-purple); box-shadow: 0 0 15px var(--neon-purple);">瀏覽 GitHub 專案庫</a>
             </div>
             <div class="visual-box" style="border-color: var(--neon-purple); padding: 40px; text-align: center; background: radial-gradient(circle, #220033 0%, #050505 100%);">
                 <div style="font-size: 8rem; filter: drop-shadow(0 0 20px var(--neon-purple));">🎮</div>
-                <h3 style="margin-top: 20px; color: var(--neon-purple); letter-spacing: 5px;">SYSTEM CORE</h3>
             </div>
         </div>
     </section>
 
-    <section id="ursina">
-        <div class="container">
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                <div class="visual-box"><img src="ursina_1.png" style="height: 250px; object-fit: cover;" onclick="openLightbox(this.src)"></div>
-                <div class="visual-box"><img src="ursina_2.png" style="height: 250px; object-fit: cover;" onclick="openLightbox(this.src)"></div>
+    <section id="adventure">
+        <div class="container" style="display: block;">
+            <div class="glass-card" style="margin-bottom: 40px; border-color: var(--forest-green);">
+                <div class="badge" style="background: var(--forest-green); color: #000;">九芎湖</div>
+                <h2 style="color: var(--forest-green);">新埔步道之旅</h2>
+                <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 20px;">
+                    <div class="visual-box" style="border-color: var(--forest-green);"><img src="九芎湖1.jpg" style="height: 300px;" onclick="openLightbox(this.src)"></div>
+                    <div style="display: grid; gap: 20px;">
+                        <div class="visual-box" style="border-color: var(--forest-green);"><img src="九芎湖2.jpg" style="height: 140px;" onclick="openLightbox(this.src)"></div>
+                        <div class="visual-box" style="border-color: var(--forest-green);"><img src="九芎湖3.jpg" style="height: 140px;" onclick="openLightbox(this.src)"></div>
+                    </div>
+                </div>
             </div>
-            <div class="glass-card">
-                <div class="badge" style="background: #00bbff; color: #000;">CODING</div>
-                <h2 style="color: #00bbff;">Ursina 3D 建模</h2>
-                <p>運用 Python 結合 Ursina 引擎進行開發。成功掌握物件渲染、動態邏輯與場景架構，極大地提升了程式邏輯與空間技術基礎。</p>
+            <div class="glass-card" style="border-color: var(--sky-blue);">
+                <div class="badge" style="background: var(--sky-blue); color: #000;">劍湖山</div>
+                <h2 style="color: var(--sky-blue);">主題樂園紀錄</h2>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="visual-box" style="border-color: var(--sky-blue);"><img src="劍湖山1.jpg" style="height: 200px;" onclick="openLightbox(this.src)"></div>
+                    <div class="visual-box" style="border-color: var(--sky-blue);"><img src="劍湖山2.jpg" style="height: 200px;" onclick="openLightbox(this.src)"></div>
+                </div>
             </div>
         </div>
     </section>
@@ -144,15 +159,14 @@
             <div class="glass-card" style="margin-bottom: 40px; border-color: var(--warm-orange); text-align: center;">
                 <div class="badge" style="background: var(--warm-orange); color: #000;">HOME TOWN</div>
                 <h2 style="color: var(--warm-orange);">後龍老家：過年紀錄</h2>
-                <p>回到老家與家人共慶佳節。在鞭炮聲與聚餐中，感受最真實的節慶氛圍與家鄉情懷，是寒假中最溫馨的放鬆時光。</p>
-            </div>
-            <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 20px;">
-                <div class="visual-box" style="border-color: var(--warm-orange);">
-                    <video muted loop playsinline src="後龍3.mp4" style="height: 400px; width: 100%; object-fit: cover;" onclick="openVideoLightbox(this.src)"></video>
-                </div>
-                <div style="display: grid; gap: 20px;">
-                    <div class="visual-box" style="border-color: var(--warm-orange);"><img src="後龍1.jpg" style="height: 190px; width: 100%; object-fit: cover;" onclick="openLightbox(this.src)"></div>
-                    <div class="visual-box" style="border-color: var(--warm-orange);"><img src="後龍2.jpg" style="height: 190px; width: 100%; object-fit: cover;" onclick="openLightbox(this.src)"></div>
+                <div class="houlong-layout">
+                    <div class="visual-box" style="border-color: var(--warm-orange);">
+                        <video muted loop playsinline src="後龍3.mp4" onclick="openVideoLightbox(this.src)"></video>
+                    </div>
+                    <div class="houlong-side">
+                        <div class="visual-box" style="border-color: var(--warm-orange);"><img src="後龍1.jpg" onclick="openLightbox(this.src)"></div>
+                        <div class="visual-box" style="border-color: var(--warm-orange);"><img src="後龍2.jpg" onclick="openLightbox(this.src)"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -161,13 +175,13 @@
     <section id="farm">
         <div class="container">
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                <div class="visual-box" style="border-color: var(--warm-orange);"><img src="農場.jpg" style="height: 300px; width: 100%; object-fit: cover;" onclick="openLightbox(this.src)"></div>
-                <div class="visual-box" style="border-color: var(--warm-orange);"><img src="雞蛋.jpg" style="height: 300px; width: 100%; object-fit: cover;" onclick="openLightbox(this.src)"></div>
+                <div class="visual-box" style="border-color: var(--warm-orange);"><img src="農場.jpg" style="height: 300px;" onclick="openLightbox(this.src)"></div>
+                <div class="visual-box" style="border-color: var(--warm-orange);"><img src="雞蛋.jpg" style="height: 300px;" onclick="openLightbox(this.src)"></div>
             </div>
             <div class="glass-card" style="border-color: var(--warm-orange);">
                 <div class="badge" style="background: var(--warm-orange); color: #000;">LIFE EXPERIENCE</div>
                 <h2 style="color: var(--warm-orange);">農場生活紀錄</h2>
-                <p>參與農業實踐與勞作。透過與自然的互動學習資源循環，在平實的生活細節中體會勞動的價值與成就感。</p>
+                <p>參與農業實踐與勞作。透過與自然的互動學習資源循環。</p>
             </div>
         </div>
     </section>
@@ -193,62 +207,26 @@
         function openVideoLightbox(src) { const lb = document.getElementById('video-lightbox'); const v = document.getElementById('lightbox-video'); v.src = src; lb.style.display = 'flex'; document.body.style.overflow = 'hidden'; v.play(); }
         function closeVideoLightbox(e) { if (e.target.id === 'video-lightbox') { document.getElementById('video-lightbox').style.display = 'none'; document.body.style.overflow = 'auto'; } }
 
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' });
-            });
-        });
-
-        const canvas = document.getElementById('bg-canvas');
-        const ctx = canvas.getContext('2d');
-        let w, h, mode = "tech";
-        const fontSize = 18;
-        let columns, drops;
-        const orangeDotCount = 400; 
-
-        function init() {
-            w = canvas.width = window.innerWidth;
-            h = canvas.height = window.innerHeight;
-            columns = Math.floor(w / fontSize);
-            drops = Array(columns).fill(1);
-        }
-        window.onresize = init;
-        init();
-
-        class Particle {
-            constructor() { this.reset(); }
-            reset() { this.x = Math.random() * w; this.y = Math.random() * -h; this.vy = Math.random() * 1.5 + 0.5; this.size = Math.random() * 2 + 1; this.opacity = Math.random() * 0.5 + 0.1; }
-            update() { this.y += this.vy; if (this.y > h) this.reset(); }
-            draw() { ctx.fillStyle = `rgba(255, 153, 51, ${this.opacity})`; ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill(); }
-        }
-        const particles = Array.from({length: orangeDotCount}, () => new Particle());
+        const canvas = document.getElementById('bg-canvas'), ctx = canvas.getContext('2d');
+        let w, h, mode = "tech", drops;
+        function init() { w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; drops = Array(Math.floor(w / 18)).fill(1); }
+        window.onresize = init; init();
 
         function draw() {
-            ctx.fillStyle = "rgba(5, 5, 5, 0.15)";
-            ctx.fillRect(0, 0, w, h);
+            ctx.fillStyle = "rgba(5, 5, 5, 0.15)"; ctx.fillRect(0, 0, w, h);
             if (mode === "tech") {
-                ctx.font = fontSize + "px monospace";
+                ctx.font = "18px monospace";
                 for (let i = 0; i < drops.length; i++) {
-                    const text = Math.random() > 0.5 ? "1" : "0";
                     ctx.fillStyle = Math.random() > 0.95 ? "#fff" : "#00ffcc";
-                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-                    if (drops[i] * fontSize > h && Math.random() > 0.975) drops[i] = 0;
-                    drops[i]++;
-                }
-            } else if (mode === "game") {
-                ctx.font = fontSize + "px monospace";
-                for (let i = 0; i < drops.length; i++) {
-                    const chars = "GAMEX01xy+-*/{}<>"; 
-                    const text = chars.charAt(Math.floor(Math.random() * chars.length));
-                    ctx.fillStyle = Math.random() > 0.95 ? "#fff" : "#bf00ff";
-                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-                    if (drops[i] * fontSize > h && Math.random() > 0.975) drops[i] = 0;
+                    ctx.fillText(Math.random() > 0.5 ? "1" : "0", i * 18, drops[i] * 18);
+                    if (drops[i] * 18 > h && Math.random() > 0.975) drops[i] = 0;
                     drops[i]++;
                 }
             } else {
-                particles.forEach(p => { p.update(); p.draw(); });
+                for(let i=0; i<30; i++) {
+                    ctx.fillStyle = "rgba(255, 153, 51, 0.4)";
+                    ctx.beginPath(); ctx.arc(Math.random()*w, Math.random()*h, 1, 0, Math.PI*2); ctx.fill();
+                }
             }
             requestAnimationFrame(draw);
         }
@@ -258,20 +236,11 @@
             let current = "";
             const sections = document.querySelectorAll('section');
             sections.forEach(sec => { if (window.pageYOffset >= sec.offsetTop - 350) current = sec.getAttribute('id'); });
-            document.querySelectorAll('nav a').forEach(a => {
-                a.classList.remove('active');
-                if (a.getAttribute('href') === `#${current}`) a.classList.add('active');
-            });
-
+            
             if (["houlong", "farm", "thanks"].includes(current)) {
-                mode = "life";
-                document.documentElement.style.setProperty('--accent', '#ff9933');
-            } else if (current === "game-x") {
-                mode = "game";
-                document.documentElement.style.setProperty('--accent', '#bf00ff');
+                mode = "life"; document.documentElement.style.setProperty('--accent', '#ff9933');
             } else {
-                mode = "tech";
-                document.documentElement.style.setProperty('--accent', '#00ffcc');
+                mode = "tech"; document.documentElement.style.setProperty('--accent', '#00ffcc');
             }
         };
     </script>
